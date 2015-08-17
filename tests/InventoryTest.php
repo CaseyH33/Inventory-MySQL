@@ -59,6 +59,21 @@
             $result = Inventory::getAll();
             $this->assertEquals([], $result);
         }
+
+        function test_find()
+        {
+            $item = "POGs";
+            $item2 = "Pokemon Cards";
+            $test_item = new Inventory($item);
+            $test_item->save();
+            $test_item2 = new Inventory($item2);
+            $test_item2->save();
+
+            $search_item = $test_item->getItem();
+            $result = Inventory::find($search_item);
+
+            $this->assertEquals($test_item, $result);
+        }
     }
 
  ?>
