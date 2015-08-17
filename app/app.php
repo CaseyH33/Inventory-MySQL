@@ -15,7 +15,7 @@
     ));
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('index.html.twig', array('inventory' => Inventory::getAll()));
     });
 
     $app->post("/create", function() use ($app) {
@@ -30,6 +30,10 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->get("/search", function() use ($app){
+        $search = Inventory::find($_GET['search']);
+        return $app['twig']->render('search.html.twig', array('search' => $search, 'search_term' => $_GET['search']));
+    });
 
     return $app;
  ?>

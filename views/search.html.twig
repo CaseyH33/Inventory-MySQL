@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Inventory</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Inventory</h1>
+
+            {% if search is not empty %}
+                <h3>{{ search.getItem }} is in your inventory!</h3>
+            {% else %}
+                <h3>{{ search_term }} is not in your inventory!</h3>
+            {% endif %}
+
+            <form action="/">
+                <button type="submit" class="btn btn-warning">Home</button>
+            </form>
+        </div>
+    </body>
+</html>
